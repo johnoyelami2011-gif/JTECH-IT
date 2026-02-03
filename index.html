@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JTECH & IT SOLUTIONS - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0a84ff;
+            --primary-dark: #0066cc;
+            --secondary: #ff6b35;
+            --dark-bg: #121212;
+            --darker-bg: #0a0a0a;
+            --card-bg: #1e1e1e;
+            --light-text: #f0f0f0;
+            --gray-text: #b0b0b0;
+            --border-color: #333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: var(--darker-bg);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 18px;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light-text);
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 40px 0;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero h1 span {
+            color: var(--primary);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--gray-text);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            margin-left: 15px;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(10, 132, 255, 0.1);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--light-text);
+        }
+        
+        .section-title p {
+            color: var(--gray-text);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border-color);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary);
+        }
+        
+        .service-icon {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Courses */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .course-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            border: 1px solid var(--border-color);
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+        
+        .course-header {
+            padding: 25px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .course-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .course-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .course-price span {
+            font-size: 1rem;
+            color: var(--gray-text);
+        }
+        
+        .course-features {
+            padding: 25px;
+        }
+        
+        .course-features ul {
+            list-style: none;
+        }
+        
+        .course-features li {
+            padding: 8px 0;
+            color: var(--gray-text);
+        }
+        
+        .course-features li i {
+            color: var(--primary);
+            margin-right: 10px;
+        }
+        
+        .course-footer {
+            padding: 0 25px 25px;
+        }
+        
+        /* About */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-img {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Contact */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .contact-details {
+            margin-top: 30px;
+        }
+        
+        .contact-details div {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-details i {
+            color: var(--primary);
+            margin-right: 15px;
+            font-size: 20px;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            color: var(--light-text);
+            font-size: 16px;
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--darker-bg);
+            padding: 60px 0 30px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .footer-links h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--light-text);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--gray-text);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            color: var(--gray-text);
+        }
+        
+        /* Slide-in effect */
+        .slide-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+        
+        .slide-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Course Page Styles */
+        .course-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9));
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            text-align: center;
+        }
+        
+        .course-detail {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 40px;
+            margin-top: -50px;
+            position: relative;
+            z-index: 2;
+            border: 1px solid var(--border-color);
+        }
+        
+        .course-content {
+            margin-top: 60px;
+        }
+        
+        .course-module {
+            margin-bottom: 40px;
+            padding: 30px;
+            background-color: rgba(30, 30, 30, 0.7);
+            border-radius: 10px;
+            border-left: 5px solid var(--primary);
+        }
+        
+        .course-module h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .enrollment-box {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            margin-top: 60px;
+        }
+        
+        .zoom-badge {
+            display: inline-block;
+            background-color: #2d8cff;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--darker-bg);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .btn-secondary {
+                margin-left: 0;
+                margin-top: 15px;
+                display: block;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .course-card,
+            .service-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">JTECH & <span>IT SOLUTIONS</span></div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content slide-in">
+                <h1>Transform Your <span>Digital Future</span> with Our IT Solutions</h1>
+                <p>JTECH & IT SOLUTIONS provides cutting-edge technology services and comprehensive training programs to help businesses and individuals thrive in the digital age.</p>
+                <a href="#courses" class="btn">Explore Courses</a>
+                <a href="#services" class="btn btn-secondary">Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title slide-in">
+                <h2>About JTECH & IT SOLUTIONS</h2>
+                <p>We are a leading technology solutions provider with over a decade of experience in delivering innovative IT services and education.</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text slide-in">
+                    <h3>Our Mission & Vision</h3>
+                    <p>At JTECH & IT SOLUTIONS, we're committed to bridging the digital skills gap by providing high-quality, accessible technology education alongside comprehensive IT services for businesses of all sizes.</p>
+                    <p>Founded in 2025, we've trained over 5,000 professionals and served more than 200 businesses with our technology solutions. Our team of certified experts brings real-world experience to every project and course we deliver.</p>
+                    <p>We believe in hands-on, practical learning combined with theoretical knowledge to create professionals ready for the challenges of today's tech industry.</p>
+                    <a href="#contact" class="btn" style="margin-top: 20px;">Get In Touch</a>
+                </div>
+                <div class="about-img slide-in">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="JTECH Team">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" style="background-color: var(--darker-bg);">
+        <div class="container">
+            <div class="section-title slide-in">
+                <h2>Our Services</h2>
+                <p>We offer a comprehensive range of IT services to help your business grow and succeed in the digital landscape.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card slide-in">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Custom website and web application development using modern technologies and frameworks to create responsive, user-friendly solutions.</p>
+                </div>
+                <div class="service-card slide-in">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile App Development</h3>
+                    <p>Native and cross-platform mobile application development for iOS and Android to reach your customers on their preferred devices.</p>
+                </div>
+                <div class="service-card slide-in">
+                    <div class="service-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Cloud Solutions</h3>
+                    <p>Migration, deployment, and management of cloud infrastructure to improve scalability, security, and performance of your applications.</p>
+                </div>
+                <div class="service-card slide-in">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Cybersecurity</h3>
+                    <p>Comprehensive security assessments, vulnerability testing, and implementation of robust security measures to protect your digital assets.</p>
+                </div>
+                <div class="service-card slide-in">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>IT Consulting</h3>
+                    <p>Strategic technology consulting to help you make informed decisions about your IT infrastructure, digital transformation, and technology investments.</p>
+                </div>
+                <div class="service-card slide-in">
+                    <div class="service-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Database Management</h3>
+                    <p>Design, implementation, and optimization of database systems to ensure data integrity, performance, and security for your applications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses">
+        <div class="container">
+            <div class="section-title slide-in">
+                <h2>Our Featured Courses</h2>
+                <p>Interactive Zoom-based courses with hands-on projects, expert instructors, and flexible learning schedules.</p>
+            </div>
+            <div class="courses-grid">
+                <div class="course-card slide-in">
+                    <div class="course-header">
+                        <h3>Full Stack Web Development</h3>
+                        <div class="course-price">$299 <span>/ full course</span></div>
+                    </div>
+                    <div class="course-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> HTML, CSS, JavaScript fundamentals</li>
+                            <li><i class="fas fa-check"></i> React.js frontend framework</li>
+                            <li><i class="fas fa-check"></i> Node.js & Express backend</li>
+                            <li><i class="fas fa-check"></i> MongoDB database integration</li>
+                            <li><i class="fas fa-check"></i> Deployment & DevOps basics</li>
+                            <li><i class="fas fa-check"></i> 8-week comprehensive program</li>
+                        </ul>
+                    </div>
+                    <div class="course-footer">
+                        <a href="web-dev-course.html" class="btn" style="width: 100%; text-align: center;">View Course Details</a>
+                    </div>
+                </div>
+                
+                <div class="course-card slide-in">
+                    <div class="course-header">
+                        <h3>Mobile App Development</h3>
+                        <div class="course-price">$249 <span>/ full course</span></div>
+                    </div>
+                    <div class="course-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> React Native fundamentals</li>
+                            <li><i class="fas fa-check"></i> iOS & Android app development</li>
+                            <li><i class="fas fa-check"></i> Mobile UI/UX design principles</li>
+                            <li><i class="fas fa-check"></i> API integration for mobile apps</li>
+                            <li><i class="fas fa-check"></i> App Store & Play Store deployment</li>
+                            <li><i class="fas fa-check"></i> 6-week intensive program</li>
+                        </ul>
+                    </div>
+                    <div class="course-footer">
+                        <a href="mobile-dev-course.html" class="btn" style="width: 100%; text-align: center;">View Course Details</a>
+                    </div>
+                </div>
+                
+                <div class="course-card slide-in">
+                    <div class="course-header">
+                        <h3>Python Programming</h3>
+                        <div class="course-price">$199 <span>/ full course</span></div>
+                    </div>
+                    <div class="course-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Python syntax & fundamentals</li>
+                            <li><i class="fas fa-check"></i> Data structures & algorithms</li>
+                            <li><i class="fas fa-check"></i> Web scraping & automation</li>
+                            <li><i class="fas fa-check"></i> Django web framework</li>
+                            <li><i class="fas fa-check"></i> Data analysis with Pandas</li>
+                            <li><i class="fas fa-check"></i> 5-week comprehensive program</li>
+                        </ul>
+                    </div>
+                    <div class="course-footer">
+                        <a href="python-course.html" class="btn" style="width: 100%; text-align: center;">View Course Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="background-color: var(--darker-bg);">
+        <div class="container">
+            <div class="section-title slide-in">
+                <h2>Contact Us</h2>
+                <p>Get in touch with us for inquiries about our services or courses. We're here to help you with your technology needs.</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info slide-in">
+                    <h3>Get In Touch</h3>
+                    <p>Have questions about our services or courses? Want to discuss a potential project? Reach out to us using the contact form or through our contact details below.</p>
+                    <div class="contact-details">
+                        <div>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>54, Fola Azzez off alakuko road</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-phone"></i>
+                            <span>+2348072905839</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-envelope"></i>
+                            <span>Johnoyelami2011@gmail.com</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-clock"></i>
+                            <span>Monday - Friday: 9:00 AM - 6:00 PM</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form slide-in">
+                    <form id="contactForm">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <input type="text" placeholder="Subject" required>
+                        <textarea placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">JTECH & <span>IT SOLUTIONS</span></div>
+                    <p>Providing cutting-edge technology solutions and education since 2025. Empowering businesses and individuals to thrive in the digital age.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#courses">Courses</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Courses</h4>
+                    <ul>
+                        <li><a href="web-dev-course.html">Web Development</a></li>
+                        <li><a href="mobile-dev-course.html">Mobile Development</a></li>
+                        <li><a href="python-course.html">Python Programming</a></li>
+                        <li><a href="#courses">Java Programming</a></li>
+                        <li><a href="#courses">React Framework</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect With Us</h4>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i> LinkedIn</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 JTECH & IT SOLUTIONS. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Course Pages (Hidden by default) -->
+    <div id="coursePages" style="display: none;">
+        <!-- Web Development Course Page -->
+        <div id="webDevCoursePage">
+            <!-- This content would be on a separate page in a real implementation -->
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Slide-in animation on scroll
+        const slideInElements = document.querySelectorAll('.slide-in');
+        
+        const checkSlide = () => {
+            slideInElements.forEach(element => {
+                // Get the position of the element relative to the viewport
+                const slideInAt = window.scrollY + window.innerHeight - element.offsetHeight / 3;
+                const elementBottom = element.offsetTop + element.offsetHeight;
+                const isHalfShown = slideInAt > element.offsetTop;
+                const isNotScrolledPast = window.scrollY < elementBottom;
+                
+                if (isHalfShown && isNotScrolledPast) {
+                    element.classList.add('active');
+                }
+            });
+        };
+        
+        // Initial check
+        checkSlide();
+        
+        // Check on scroll
+        window.addEventListener('scroll', checkSlide);
+        
+        // Header scroll effect
+        const header = document.querySelector('header');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.style.padding = '15px 0';
+                header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.5)';
+            } else {
+                header.style.padding = '20px 0';
+                header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.5)';
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Contact form submission
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for your message! We will get back to you soon.');
+                contactForm.reset();
+            });
+        }
+        
+        // Course enrollment simulation
+        document.querySelectorAll('.course-footer .btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // In a real implementation, this would navigate to the course page
+                // For this demo, we'll just show an alert
+                if (!this.href || this.href === '#') {
+                    e.preventDefault();
+                    const courseName = this.closest('.course-card').querySelector('h3').textContent;
+                    alert(`You're being redirected to the ${courseName} details page. In a real implementation, this would navigate to a separate course page.`);
+                    
+                    // Simulate page navigation for demo purposes
+                    // In a real site, this would be an actual page navigation
+                    const coursePages = document.getElementById('coursePages');
+                    coursePages.style.display = 'block';
+                    document.querySelector('main').style.display = 'none';
+                    
+                    // Show back button
+                    const backBtn = document.createElement('button');
+                    backBtn.className = 'btn';
+                    backBtn.textContent = 'Back to Main Site';
+                    backBtn.style.position = 'fixed';
+                    backBtn.style.top = '20px';
+                    backBtn.style.right = '20px';
+                    backBtn.style.zIndex = '10000';
+                    backBtn.addEventListener('click', () => {
+                        coursePages.style.display = 'none';
+                        document.querySelector('main').style.display = 'block';
+                        backBtn.remove();
+                    });
+                    document.body.appendChild(backBtn);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
